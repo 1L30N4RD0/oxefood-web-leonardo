@@ -64,8 +64,7 @@ export default function FormEntregador() {
             <MenuSistema tela={'entregador'} />
             <div style={{ marginTop: '3%' }}>
 
-                <Container textAlign='justified' >
-
+            <Container style={{ width: '90%', maxWidth: '90%' }} textAlign='justified'  >
                     <h2> <span style={{ color: 'darkgray' }}> Entregador &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
 
                     <Divider />

@@ -23,15 +23,16 @@ export default function FormCliente() {
             foneFixo: foneFixo
         }
 
-        axios.post("http://localhost:8080/api/cliente", clienteRequest)
-            .then((response) => {
-                alert('PEGOU PORRA');
-                console.log('Cliente cadastrado com sucesso.')
-            })
-            .catch((error) => {
-                alert('Deu errado mane');
-                console.log('Erro ao incluir o um cliente.')
-            })
+        if (idCliente != null) {
+            axios.put("http://localhost:8080/api/cliente/" + idCliente, clienteRequest)
+                .then((response) => { console.log('Cliente alterado com sucesso.') })
+                .catch((error) => { console.log('Erro ao alter um cliente.') })
+        } else {
+            axios.post("http://localhost:8080/api/cliente", clienteRequest)
+                .then((response) => { console.log('Cliente cadastrado com sucesso.') })
+                .catch((error) => { console.log('Erro ao incluir o cliente.') })
+        }
+
     }
 
     return (
@@ -41,6 +42,14 @@ export default function FormCliente() {
             <div style={{ marginTop: '3%' }}>
 
                 <Container textAlign='justified' >
+
+                    {idCliente === undefined &&
+                        <h2> <span style={{ color: 'darkgray' }}> Cliente &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro</h2>
+                    }
+                    {idCliente != undefined &&
+                        <h2> <span style={{ color: 'darkgray' }}> Cliente &nbsp;<Icon name='angle double right' size="small" /> </span> Alteração</h2>
+                    }
+
 
                     <h2> <span style={{ color: 'darkgray' }}> Cliente &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
 
@@ -66,7 +75,7 @@ export default function FormCliente() {
                                     required
                                     fluid
                                     label='CPF'
-                                    >
+                                >
                                     <InputMask
                                         required
                                         mask="999.999.999-99"
@@ -95,7 +104,7 @@ export default function FormCliente() {
                                     fluid
                                     label='Fone Fixo'
                                     width={6}
-                                    >
+                                >
                                     <InputMask
                                         mask="(99) 9999.9999"
                                         value={foneFixo}
@@ -107,8 +116,8 @@ export default function FormCliente() {
                                     fluid
                                     label='Data Nascimento'
                                     width={6}
-                                    
-                                    >
+
+                                >
                                     <InputMask
                                         mask="99/99/9999"
                                         maskChar={null}

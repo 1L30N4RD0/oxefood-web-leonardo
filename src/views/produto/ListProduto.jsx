@@ -7,7 +7,7 @@ import MenuSistema from '../../MenuSistema';
 export default function ListProduto() {
 
     const [lista, setLista] = useState([]);
-ww
+
     useEffect(() => {
         carregarLista();
     }, [])
@@ -18,15 +18,6 @@ ww
             .then((response) => {
                 setLista(response.data)
             })
-    }
-    function formatarData(dataParam) {
-
-        if (dataParam === null || dataParam === '' || dataParam === undefined) {
-            return ''
-        }
-
-        let arrayData = dataParam.split('-');
-        return arrayData[2] + '/' + arrayData[1] + '/' + arrayData[0];
     }
     return (
         <div>
@@ -56,11 +47,12 @@ ww
 
                             <Table.Header>
                                 <Table.Row>
-                                    <Table.HeaderCell>Nome</Table.HeaderCell>
-                                    <Table.HeaderCell>CPF</Table.HeaderCell>
-                                    <Table.HeaderCell>Data de Nascimento</Table.HeaderCell>
-                                    <Table.HeaderCell>Fone Celular</Table.HeaderCell>
-                                    <Table.HeaderCell>Fone Fixo</Table.HeaderCell>
+                                    <Table.HeaderCell>Titulo</Table.HeaderCell>
+                                    <Table.HeaderCell>Código</Table.HeaderCell>
+                                    <Table.HeaderCell>Descrição</Table.HeaderCell>
+                                    <Table.HeaderCell>Valor Unitário</Table.HeaderCell>
+                                    <Table.HeaderCell>Tempo Máximo de Entrega</Table.HeaderCell>
+                                    <Table.HeaderCell>Tempo Mínimo de Entrega</Table.HeaderCell>
                                     <Table.HeaderCell textAlign='center'>Ações</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
@@ -70,11 +62,12 @@ ww
                                 {lista.map(produto => (
 
                                     <Table.Row key={produto.id}>
-                                        <Table.Cell>{produto.nome}</Table.Cell>
-                                        <Table.Cell>{produto.cpf}</Table.Cell>
-                                        <Table.Cell>{formatarData(produto.dataNascimento)}</Table.Cell>
-                                        <Table.Cell>{produto.foneCelular}</Table.Cell>
-                                        <Table.Cell>{produto.foneFixo}</Table.Cell>
+                                        <Table.Cell>{produto.titulo}</Table.Cell>
+                                        <Table.Cell>{produto.codigo}</Table.Cell>
+                                        <Table.Cell>{produto.descricao}</Table.Cell>
+                                        <Table.Cell>{produto.valorUnitario}</Table.Cell>
+                                        <Table.Cell>{produto.tempoEntregaMaximo}</Table.Cell>
+                                        <Table.Cell>{produto.tempoEntregaMinimo}</Table.Cell>
                                         <Table.Cell textAlign='center'>
 
                                             <Button
