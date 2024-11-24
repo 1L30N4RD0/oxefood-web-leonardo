@@ -7,7 +7,7 @@ import MenuSistema from '../../MenuSistema';
 export default function ListProduto() {
 
     const [lista, setLista] = useState([]);
-
+ww
     useEffect(() => {
         carregarLista();
     }, [])
