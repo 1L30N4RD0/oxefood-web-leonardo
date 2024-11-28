@@ -74,10 +74,11 @@ export default function ListProduto() {
                                                 inverted
                                                 circular
                                                 color='green'
-                                                title='Clique aqui para editar os dados deste produto'
+                                                title='Clique aqui para editar os dados deste cliente'
                                                 icon>
-                                                <Icon name='edit' />
-                                            </Button> &nbsp;
+                                                <Link to="/form-produto" state={{ id: produto.id }} style={{ color: 'green' }}> <Icon name='edit' /> </Link>
+                                            </Button> 
+                                            &nbsp;
 
                                             <Button
                                                 inverted
@@ -101,4 +102,3 @@ export default function ListProduto() {
         </div>
     )
 }
-    
