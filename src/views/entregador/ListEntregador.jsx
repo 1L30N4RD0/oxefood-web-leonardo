@@ -5,7 +5,7 @@ import { Button, Container, Divider, Icon, Table, Modal, Header, TableHeader, Ta
 import MenuSistema from '../../MenuSistema';
 
 export default function ListEntregador() {
-
+    
     const [lista, setLista] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [idRemover, setIdRemover] = useState();
@@ -13,7 +13,7 @@ export default function ListEntregador() {
 
     useEffect(() => {
         carregarLista();
-    }, [])
+        })
 
     function carregarLista() {
 

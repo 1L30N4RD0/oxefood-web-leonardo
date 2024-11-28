@@ -19,10 +19,12 @@ export default function FormCliente() {
         if (state != null && state.id != null) {
             axios.get("http://localhost:8080/api/cliente/" + state.id)
                 .then((response) => {
+                    const data = response.data.dataNascimento.split('-')
+                    const formatDataNascimento = [data[2], data[1], data[0]].join("/")
                     setIdCliente(response.data.id)
                     setNome(response.data.nome)
                     setCpf(response.data.cpf)
-                    setDataNascimento(response.data.dataNascimento)
+                    setDataNascimento(formatDataNascimento)
                     setFoneCelular(response.data.foneCelular)
                     setFoneFixo(response.data.foneFixo)
                 })

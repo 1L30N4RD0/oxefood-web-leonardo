@@ -196,7 +196,7 @@ export default function FormEntregador() {
                                     label='Fone Celular'
                                     width={6}>
                                     <InputMask
-                                        mask="(99) 9999.9999"
+                                        mask="(99) 9 9999.9999"
                                         value={foneCelular}
                                         onChange={e => setFoneCelular(e.target.value)}
                                     />
@@ -207,7 +207,7 @@ export default function FormEntregador() {
                                     label='Fone Fixo'
                                     width={6}>
                                     <InputMask
-                                        mask="(99) 9999.9999"
+                                        mask="(99) 9 9999.9999"
                                         value={foneFixo}
                                         onChange={e => setFoneFixo(e.target.value)}
                                     />
@@ -280,9 +280,13 @@ export default function FormEntregador() {
                                     fluid
                                     label='CEP'
                                     width={4}
-                                    value={enderecoCep}
-                                    onChange={e => setEnderecoCep(e.target.value)}
                                 >
+
+                                    <InputMask
+                                        mask='99999-999'
+                                        value={enderecoCep}
+                                        onChange={e => setEnderecoCep(e.target.value)}
+                                    />
                                 </Form.Input>
                             </Form.Group>
 
