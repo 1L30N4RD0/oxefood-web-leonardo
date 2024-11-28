@@ -30,7 +30,7 @@ export default function ListCliente() {
         }
 
         let arrayData = dataParam.split('-');
-        return arrayData[0] + '/' + arrayData[1] + '/' + arrayData[2];
+        return arrayData[2] + '/' + arrayData[1] + '/' + arrayData[0];
 
 
 
@@ -46,7 +46,7 @@ export default function ListCliente() {
         await axios.delete('http://localhost:8080/api/cliente/' + idRemover)
             .then((response) => {
 
-                console.log('Cliente removido com sucesso.')
+                alert('Cliente removido com sucesso.')
 
                 axios.get("http://localhost:8080/api/cliente")
                     .then((response) => {
@@ -54,7 +54,7 @@ export default function ListCliente() {
                     })
             })
             .catch((error) => {
-                console.log('Erro ao remover um cliente.')
+                alert('Erro ao remover um cliente.')
             })
         setOpenModal(false)
     }
@@ -107,17 +107,16 @@ export default function ListCliente() {
                                         <Table.Cell>{cliente.foneCelular}</Table.Cell>
                                         <Table.Cell>{cliente.foneFixo}</Table.Cell>
                                         <Table.Cell textAlign='center'>
-                                            <Link to="/form-cliente" state={{ id: cliente.id }} style={{ color: 'green' }}>
-                                                
-                                                <Button
-                                                    inverted
-                                                    circular
-                                                    color='green'
-                                                    title='Clique aqui para editar os dados deste cliente'
-                                                    icon>
-                                                </Button>
-                                                
-                                            </Link>
+
+                                            <Button
+                                                inverted
+                                                circular
+                                                color='green'
+                                                title='Clique aqui para editar os dados desta empresa'
+                                                icon>
+                                                <Link to="/form-cliente" state={{ id: cliente.id }} style={{ color: 'green' }}> <Icon name='edit' /> </Link>
+                                            </Button>
+
 
                                             &nbsp;
                                             <Button
